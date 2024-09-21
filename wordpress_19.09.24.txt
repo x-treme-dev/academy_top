@@ -1,0 +1,107 @@
+При преносе проекта нужно зайти в wp-config.php и отредактировать настройки
+
+define( 'WP_DEBUG', false ); - настроить отладку (рекомендуется true)
+
+Также можно в wp-config.php добавить функции
+set_time_limit(120);
+ini_set('memory_limit', '1000M');
+
+$_SERVER['HTTPS'] = 'on'; // вставить после объявлений define... в wp-config.php
+
+phpmyadmin(библиотека php, базы хранятся отдельно) устанавливается в htdocs xampp'a
+
+wordpress можно использовать как движок (как и фреймворки)
+
+					Работа с Базой данных
+https://developer.wordpress.org/reference/classes/wpdb/
+Создать в коренe wordpress'a папку db и в ней файл index.php и в нем работаем с базой данный через функции wordpress'a. Например, наполнить базу данных посредством скрипта.
+<?php
+  // wpdb - глобальная переменная
+  require_once('../wp-load.php');
+  
+  global $wpdb;
+  echo $wpdb->last_query;
+  $q = $wqdb->query('SELECT NOW()');
+  print_r($q);
+?>
+Так можно работать с библиотекой wpdb, решая различные задачи разработки (подобно medoo из Композера).
+get_row
+get_results
+get_var
+
+%s - строка
+%d - число
+%f - число с плав. точкой ( из print_r, sprint_r) - подствляется в sql-запрос для защиты от хакерских аткак
+Т.е. сначала объявляютя переменные (определенных типов), а затем функция по порядку объявления перемнных берет их 
+и подставляет вместо %s (или %s, %s), %d, %f и так далее. Принцип такой же как и при подстановке в print_r, sprint_r
+
+$wpdb->update()
+
+Хуки (событие) - на них строится wordpress. 
+
+https://wordpress.org/plugins/wp-super-cache/ 
+
+
+Открыть и отредактировать файл functions.php  в активной теме (директрория C:\xampp\htdocs\wordpress\wp-content\themes\twentyseventeen)
+
+// ----------------- добавлен код 19.09.24
+add_action('admin_init', 'top_register_parser_settings');
+
+function theme_ref_options_callback():void{}
+
+function theme_commission_callback($args):void {
+	$option = get_option($args[0]);
+	echo '<input type="number" id="' . $args[0] . '" name = "'.
+    $args[0]
+    . '" value="' . $option . '" /> %';
+}
+
+function top_register_parser_settings():void{
+	add_settings_section(21:03 19.09.2024
+		'top_theme_section', // id
+		'Число записей', // title
+		'theme_ref_options_callback', // callbacks
+		'general'                      // page
+	);
+	
+		add_settings_field(
+		'theme_referral_commission', // id
+		'Число записей', // title
+		'theme_commission_callback', // callbacks
+		'general',                     // page
+		'top_theme_section',         // section
+		['theme_referral_commission']
+	);
+	register_setting('general', 'theme_referral_commission', 'esc_attr');
+}
+
+// -----------------------
+
+Задача: получить данные по API и запсать в таблицу top_posts. Задача выполняется в файле wordpress/db/index.php 
+db- папка в корне проекта.
+<?php
+  // wpdb - глобальная переменная
+  require_once('../wp-load.php');
+  
+  /*global $wpdb;
+  echo $wpdb->last_query;
+  $q = $wqdb->query('SELECT NOW()');
+  print_r($q);
+  */
+  // https://jsonplaceholder.typicode.com/users
+  $json = file_get_contents('https://jsonplaceholder.typicode.com/users');
+  $data = json_decode($json);
+  
+  echo '<pre>';
+  print_r($data);
+  echo '</pre>';
+  
+  foreach($data as $key ){
+	  
+	  print_r($key->name). '<br>';
+  }
+  
+?>
+
+
+
