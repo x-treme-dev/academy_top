@@ -1,0 +1,24 @@
+<?php
+/*
+https://developer.wordpress.org/reference/classes/wpdb/#select-a-column
+ Скрипт должен проходить по таблице posts и выводить статистику по каждой записи: 
+название записи, общее число записей в таблице postmeta для каждой записи, 
+дату создания и изменения записи, число категорий, которым принадлежит запись
+*/
+
+require_once('../wp-load.php');
+
+global $wpbd;
+
+$posts = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts", OBJECT);
+
+//print_r($posts);
+
+foreach($posts as $item){
+	$ID = $item->ID;
+	$amount = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}postmeta WHERE post_id= %d ", $ID) );
+	//print_r($amount);
+	echo 'id = '. $item->ID . ', name = '. $item->post_name .', post_date = '. $item->post_date_gmt . ', post_modified = ' . $item->post_modified_gmt  .', amount = '.$amount . '<br>';
+}
+
+?>
