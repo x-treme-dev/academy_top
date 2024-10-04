@@ -1,0 +1,41 @@
+postgree - вместо mysql
+
+1. хуки как события
+2. хуки как обработка данных
+Аналогия с событиями java script
+
+apply_filters() - функция пропускает через себя
+ 
+После 3 абзаца вставляем плашку цветню с инфой.
+wp hooks finder - плагин, демонстрирует хуки.
+
+
+https://developer.wordpress.org/reference/hooks/the_content/ - сайт о wordpress'e
+
+get_posts() - получит посты из БД в виде массива объектов
+имеет аргументы
+
+Wp_Query - формирует сложные запросы
+
+таксономия - список постов, категорий
+ 
+wp_post_categories($post_id) - возвращает массив id
+
+wp_update_post() принимает массив; обновляет данные, которые мы указали
+wp_publish_post() - изменяет статус draft или publish
+wp_delete_post()
+wp_trash_post() - удалит посты из корзины
+get_term_by() - найти категорию по ...
+get_category_by_slug() - поиск категории по url
+
+wp_insert_post() - записат пост в БД, возвращает id поста
+wp_slash() - подоготовить строку к записи в БД
+get_current_user_id() - текущий user
+
+
+
+
+
+
+
+
