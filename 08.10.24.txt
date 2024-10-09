@@ -1,0 +1,31 @@
+get_option() - читаем опцию по ключу
+set_option() - 
+maybe_serialize() - переводит любой объект, строку, число в json
+
+
+Для работы в сети
+file_get_contents() (в вордпресе - wp_http_api) получить данные по сети
+wp_remote_post() - для получения данных по сети
+wp_remote_get($url);
+wp_remote_retrieve_body() 
+wp_upload_dir() - ключи, по которым сохраняем картинку
+wp_mkdir_p - создает папку, если нет папки
+
+Как создается плагин
+wp_content_plugins
+
+wp_update_post()
+wp_insert_category()
+get_default_post_to_edit()
+wp_insert_post() - записать в таблицу
+
+wp_slash()
+sanitase_text_field();
+
+
+Для создания плагинов знать:
+шорткод, 
+
+<? do_shortcode('[contact-form-7 id=10]') - для вывода в формате html
+basic http authorization - все сайты нужно держать под паролем
+parse_url() разбирает url на части протокол, порт, путь,  
