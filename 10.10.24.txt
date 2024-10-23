@@ -1,0 +1,29 @@
+Плагины
+
+Вся логика на wp должна быть в плагинах, а не в темах. Формы, проверки и т.п. 
+
+Создать папку в wp-plugin
+Папка должна называть также, как файл внутри нее.
+
+
+plugin_dir_path();
+plugin_url();
+plugin_dir_url();
+plugins_url()
+ZBPARSER_ASSETS - эти файлы находятся в основной папку плагина для инициализации
+
+Создать плагин и продавать
+add_menu_page() - добавить плагин в левую колонку wp
+
+id плагина, который пойдет в преффиксы
+
+admin_menu - хук для вывода админской панели, к нему прикрепляется плагин
+
+add_action('admin_menu', 'my_callback');
+
+function 
+if(!current_user_can('manage_options')){
+	wp_die(_('You do not have sufficien permissions to access this page));
+}
+
+Плагин работы с API: вып.список, создает шорт-код, который создает форму поиска для фильмов
