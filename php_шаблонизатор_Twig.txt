@@ -1,2 +1,4 @@
 Документация на русском 
 https://github.com/ruden/twig-docs-ru
+
+composer require twig/twig
