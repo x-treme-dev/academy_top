@@ -1,0 +1,143 @@
+Playground for node.js
+
+https://stackblitz.com/edit/node-99aw1w?file=index.js
+
+nvm - установщик, типа Composer
+npm - установщик php 
+vite - установщик  https://vite-docs-ru.vercel.app/guide/
+nvm установить React
+node js 
+React - библиотека для работы с интерфейсом
+
+Prettier - Code formatter установить в VS Code
+
+Ctrl + ,  Format On Save
+
+npm create vite@latest
+
+node modules руками не лезем
+
+public - папка для веба
+
+src - программа, код
+
+
+Создать компонент Message.tsx в src проекта
+
+function Message() {
+  const name = 'Igor';
+
+  if (name) return <h3>Hello {name}</h3>;
+  else return <h3>Hello, World</h3>;
+}
+
+
+
+export default Message;
+
+
+import { useState } from "react";
+
+function Message() {
+  const name = 'Igor';
+ const [headerColor, setHeaderColor] = useState('');
+ 
+ return{
+   <h3
+   className={headerColor}
+   onClick= {()=> setHeaderColor((headerColor) => (headerColor = 'read-the-docs'))
+    }
+    >
+    Hello {name}
+    </h3>
+ };
+}
+export default Message;
+
+
+
+
+import { useState } from 'react';
+
+function Message() {
+  const name = 'Igor';
+ const [headerColor, setHeaderColor] = useState('');
+
+ const list = [{
+   'userId': 'fff333',
+   'title': 'Name title 123',
+   'date': '2024-10-20',
+ },];
+ 
+ return{
+   
+   <h3
+   className={headerColor}
+   onClick= {()=> setHeaderColor((headerColor) => (headerColor = 'read-the-docs'))
+    }
+    >
+    Hello {name}
+    </h3>
+    
+ };
+}
+export default Message;
+
+
+______________________________________________________________________
+App.tsx
+
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import Message from './Message';
+import './App.css';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+      <div>
+        <h3>Choice a framework or library:</h3>
+        <ul>
+          <li>React</li>
+          <li>Angular</li>
+          <li>Vue</li>
+        </ul>
+        <p>
+          <Message />
+        </p>
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
