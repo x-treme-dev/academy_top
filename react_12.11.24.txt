@@ -1,0 +1,19 @@
+npm create vite@latest
+(React, TypeScript)
+
+React -> rest API -> Laravel (валидация данных на бэке с последующей записью в базу)
+
+npm i bootstrap@latest
+
+import 'bootstrap/dist/css/bootstrap.min.css' - подключить bootstrap к файлу
+
+zod - валидатор формы описываем схему на React
+
+Установить валидатор формы zod и зависимости
+npm i @hookform/resolvers@latest
+npm i @zod 
+npm i react-hook-form
+
+
+
+ 
