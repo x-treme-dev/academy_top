@@ -1,0 +1,26 @@
+Задача: 
+Найти интернет-магазин с сортировкой и фильтрацией товаров, при которых меняется URL (добавляются GET-параметры). 
+Составить полный robots.txt для нескольких поисковых роботов, 
+чтобы от индексации были закрыты параметры URL, 
+используемые для фильтрации, сортировки и поиска.
+
+Решение:
+# robots.txt для интернет-магазина
+
+User-agent: *
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?search=
+Disallow: /*&sort=
+Disallow: /*&filter=
+Disallow: /*&search=
+
+# Дополнительные правила для конкретных поисковых систем
+User-agent: Googlebot
+Disallow: /private/
+
+User-agent: Bingbot
+Disallow: /temp/
+
+User-agent: Yandex
+Disallow: /tmp/
